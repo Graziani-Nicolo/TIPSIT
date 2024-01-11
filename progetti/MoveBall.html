@@ -44,8 +44,6 @@
         <button onclick="moveImage('right')">RIGHT</button>
         <br>
         <button onclick="moveImage('down')">DOWN</button>
-        <p>Timer</p>
-        <p id="timer"></p>
     </div>
     <img id="ball" src="https://www.conquest.it/4566-large_default/pallone-volley-mikasa-mva330-a-norme-fivb.jpg">
     <script>
@@ -68,20 +66,7 @@
                 case 'right':
                     movingImage.style.left = `${currentLeft + step}px`;
                     break;
-
             }
-        }
-        let cont=0;
-        setInterval(timer, 100)
-        function timer(){
-            cont++;
-            if(cont<61){
-                document.getElementById("timer").innerHTML = cont;
-            }
-            if(cont>61){
-                document.getElementById("timer").innerHTML = "STOP";
-            }
-
         }
     </script>
 </body>

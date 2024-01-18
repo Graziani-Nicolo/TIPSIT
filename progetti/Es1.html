@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <label for="input">Inserisci un numero</label>
+        <input type="text" id="input">
+        <button id="button" onclick="calcolo()">premi dopo aver inserito il numero</button>
+        <br>
+        <p  id="successione"></p>
+        <p  id="percentuale"></p>
+        <script>
+            function calcolo(){
+                let input=document.getElementById("input").value;
+                let i;
+                let percentuale = input*10/100;
+                document.getElementById("successione").innerHTML = "Valori generati:  ";
+                for (i=1;i<=input;i++){
+                    document.getElementById("successione").innerHTML += " " + i;
+                }
+                document.getElementById("percentuale").innerHTML = "10%: " + percentuale;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            #Box1{
+                height: 100px;
+                width: 100px;
+                background-color: #00ffff;
+                border: 1px solid #000000;
+            }#Box2{
+                height: 100px;
+                width: 100px;
+                background-color: #ff0000;
+                border: 1px solid #000000;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            var start=setInterval(start, 1000);
+            let str=0;
+            function start(){
+                str++;
+                if(str==1){
+                    generacubi();            
+                }
+            }
+            function generacubi(){
+                clearInterval(start);
+                var i="";
+                var j="";
+                for(i=0;i<5;i++){
+                    const NEW=document.createElement("div");
+                    NEW.innerHTML="";
+                    NEW.style.cssText="height: 50px; width: 50px; background-color: #00ffff; border: 1px solid #000000;"
+                    document.body.appendChild(NEW);
+                    for(j=0;j<5;j++){
+                        const NEW=document.createElement("div");
+                        NEW.innerHTML="";
+                        NEW.style.cssText="height: 50px; width: 50px; background-color: #ff0000; border: 1px solid #000000;"
+                        document.body.appendChild(NEW);
+                        break;
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>

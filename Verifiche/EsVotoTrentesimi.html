@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <label for="voto">Inserisci il voto: </label>
+        <input type="number" id="voto" name="voto" required>
+        <button type="button" onclick="conversione()">Calcola</button>
+        <p id="trentesimi"></p>
+        <script>
+            function min(){
+                let cont=0;
+                let min;
+                let voto=document.getElementById("voto").value;
+                if(cont==0){
+                    min=voto;
+                    cont++;
+                }
+                if(voto<min){
+                    min=voto;
+                }
+            }
+            function conversione(){
+                let voto=document.getElementById("voto").value;
+                let trentesimi;
+                trentesimi=voto*3;
+                document.getElementById("trentesimi").innerHTML+="trentesimi: "+trentesimi+"<br>";
+            }
+        </script>
+    </body>
+</html>

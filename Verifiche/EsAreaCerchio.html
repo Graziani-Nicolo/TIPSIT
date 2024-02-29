@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Calcolo area</title>
+        <style>
+            .quadrato{
+                height: 20px;
+                width: 20px;
+                background-color: aquamarine;
+            }
+        </style>
+    </head>
+    <body>
+            <h1>Calcola area</h1>
+            <label for="Raggio">Raggio: </label>
+            <input type="number" id="Raggio">
+            <button onclick="calcolaArea()">Calcola</button>
+            <div id="output"></div>
+            <div id="contenitore"></div>
+            <div id="quadrati"></div>
+        <script>
+            function calcolaArea() {
+                let raggio=document.getElementById('Raggio').value;
+                let risultato="";
+                risultato=raggio*raggio;
+                risultato=risultato*3.141;
+                document.getElementById("output").innerHTML=risultato;
+                var bottone=document.createElement("button");
+                bottone.textContent = "Quadrati";
+                document.getElementById("contenitore").appendChild(bottone);
+                bottone.addEventListener("click",function(){
+                    let i="";
+                    for(i=0;i<risultato;i++){
+                        var quadrato = document.createElement("div");
+                        quadrato.classList.add("quadrato");
+                        document.getElementById("quadrati").appendChild(quadrato);
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>

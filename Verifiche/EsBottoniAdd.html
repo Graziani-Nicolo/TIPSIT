@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Esercizio2</h1>
+        <label for="num">Inserisci un numero: </label>
+        <input type="number" id="num" name="num" required><br>
+        <button type="button" onclick="somma2(2)">Calcola 2</button>
+        <button type="button" onclick="somma3(3)">Calcola 3</button>
+        <button type="button" onclick="somma7(7)">Calcola 7</button>
+        <p id="output1">0</p><br>
+        <p id="output2">0</p><br>
+        <p id="output3">0</p><br>
+        <script>
+            let accumulatore2=parseInt(document.getElementById("output1").innerText);
+            let accumulatore3=parseInt(document.getElementById("output2").innerText);
+            let accumulatore7=parseInt(document.getElementById("output3").innerText);
+            let cont1=0;
+            let cont2=0;
+            let cont3=0;
+            function somma2(incremento){
+                let num=parseInt(document.getElementById("num").value);
+                if(cont1==0){
+                    accumulatore2+=num;
+                    cont1++;
+                }
+                accumulatore2+=2; 
+                document.getElementById("output1").innerText=accumulatore2; 
+            }
+            function somma3(incremento){
+                let num=parseInt(document.getElementById("num").value);
+                if(cont2==0){
+                    accumulatore3=num;
+                    cont2++;
+                }
+                accumulatore3+=3; 
+                document.getElementById("output2").innerText=accumulatore3; 
+            }
+            function somma7(incremento){
+                let num=parseInt(document.getElementById("num").value);
+                if(cont3==0){
+                    accumulatore7=num;
+                    cont3++;
+                }
+                accumulatore7+=7; 
+                document.getElementById("output3").innerText=accumulatore7; 
+            }
+        </script>
+    </body>
+</html>

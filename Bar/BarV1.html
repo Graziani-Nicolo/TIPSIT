@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <style>
+            ul{
+                list-style-type: none;
+                padding: 0;
+            }
+            li{
+                padding: 10px;
+                border-bottom: 1px solid #ccc;
+            }
+            li:last-child{
+                border-bottom: none;
+            }
+        </style>
+    </head>
+    <body>
+        <button onclick="istruzioni()">istruzioni</button>
+        <button onclick="menu()">menu</button>
+        <button onclick="ordini()">ordini</button>
+        <div id="menu"></div>
+        <div id="ordini"></div>
+        <script>
+            let cont=0;
+            var ordine=[];
+            function istruzioni(){
+                if(cont==0){
+                    alert("Ciao");
+                    cont++;
+                }
+                if(cont==1){ 
+                    alert("Sono un chatbot pronto per servirti");
+                    cont++;
+                }
+                if(cont==2){
+                    alert("premi il secondo bottone per avere la lista dei drink che sono in grado di prepararti");
+                    cont=0;
+                }
+            }
+            function menu(){
+                var menu=document.getElementById("menu");
+                var lista=document.createElement("ul");
+                menu.appendChild(lista); 
+                var drinks=["Coca Cola", "Caffè", "Succo d'arancia", "Te", "Acqua"];
+                drinks.forEach(function(drink){
+                    var elemento=document.createElement("li");
+                    elemento.textContent=drink;
+                    lista.appendChild(elemento);
+                });
+            }
+            function ordini(){
+                var ordini=document.getElementById("ordini");
+                var input=document.createElement("input");
+                input.type="text";
+                input.id="nome";
+                ordini.appendChild(input);
+                var bottoneMemorizza=document.createElement("button");
+                bottoneMemorizza.textContent="Memorizza";
+                bottoneMemorizza.onclick=function() {
+                    var inputNome=document.getElementById('nome').value;
+                    ordine.push(inputNome);
+                    document.getElementById('output').innerHTML=ordine.join(', ');
+                };
+                ordini.appendChild(bottoneMemorizza);
+                var bottoneVisualizza=document.createElement("button");
+                bottoneVisualizza.textContent="Visualizza Ordine";
+                bottoneVisualizza.onclick=function() {
+                    alert(ordine.join(', '));
+                };
+                ordini.appendChild(bottoneVisualizza);
+            }
+        </script>
+    </body>
+</html>

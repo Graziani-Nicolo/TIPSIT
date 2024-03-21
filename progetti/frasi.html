@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Array di frasi simpatiche</title>
+  
+    <style>
+        #button {
+  background-color: #0000009c;
+  border: none;
+  color: violet;
+  padding: 15px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 4px;
+  
+
+}
+#contenitore {
+    width: 250px ;
+    height: 40px;
+}
+    </style>
+</head>
+<body>  
+    <button id="button" onclick="generafrase()">Generazione</button> 
+    <div id="contenitore">
+    <p id="output"></p>
+</div>
+    <script>
+        let soggetti = ["Mirko", "Maria", "Marco", "Mario", "Marisa", "Marta", "Manuel", "Masha", "Michael", "Max"];
+        let verbi = ["Saltare", "Salvare", "Sbarcare", "Sbarrare", "Sbagliare", "Sbattere", "Salire", "Sabotare", "Sbavare", "Sbanchettare"];
+        let complementiOggetto = ["il fumetto", "la casa", "la stufa", "la banana", "la serie", "il film", "il pallone", "le carte", "il sole", "la luna"];
+        let aggettivi = ["brutto", "stupido", "triste", "noioso", "stupendo", "orribile", "casinista", "calmo", "forte", "debole"];
+
+        function generafrase() {
+            var soggetto = soggetti[Math.floor(Math.random() * soggetti.length)];
+            var verbo = verbi[Math.floor(Math.random() * verbi.length)];
+            var complementi_oggetto = complementiOggetto[Math.floor(Math.random() * complementiOggetto.length)];
+            var aggettivo = aggettivi[Math.floor(Math.random() * aggettivi.length)];
+            
+            let frase = soggetto + " " + verbo + " " + complementi_oggetto + " " + aggettivo + ".";
+            document.getElementById("output").innerText = frase;   
+        }
+    </script>
+</body>
+</html>

@@ -1,40 +1,115 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Array di frasi simpatiche</title>
-  
-    <style>
-        #button {
-  background-color: #0000009c;
-  border: none;
-  color: violet;
-  padding: 15px 32px;
-  text-align: center;
-  font-size: 16px;
-  margin: 4px 4px;
-  
-
-}
-#contenitore {
-    width: 250px ;
-    height: 40px;
-}
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Modificabili</title>
 </head>
-<body>  
-    <button id="button" onclick="generafrase()">Generazione</button> 
-    <div id="contenitore">
-    <p id="output"></p>
+<body>
+<div class="container mt-5">
+    <h1>Array Modificabili</h1>
+    <div class="row mt-4">
+        <div class="col">
+            <h3>Soggetti</h3>
+            <ul id="soggetti" class="list-group">
+            </ul>
+            <div class="input-group mt-3">
+                <input type="text" id="nuovoSoggetto" class="form-control" placeholder="Nuovo Soggetto">
+                <button id="aggiungiSoggetto" class="btn btn-primary">Aggiungi</button>
+            </div>
+        </div>
+        <div class="col">
+            <h3>Verbi</h3>
+            <ul id="verbi" class="list-group">
+            </ul>
+            <div class="input-group mt-3">
+                <input type="text" id="nuovoVerbo" class="form-control" placeholder="Nuovo Verbo">
+                <button id="aggiungiVerbo" class="btn btn-primary">Aggiungi</button>
+            </div>
+        </div>
+        <div class="col">
+            <h3>Complementi Oggetto</h3>
+            <ul id="complementiOggetto" class="list-group">
+            </ul>
+            <div class="input-group mt-3">
+                <input type="text" id="nuovoComplementoOggetto" class="form-control" placeholder="Nuovo Complemento Oggetto">
+                <button id="aggiungiComplementoOggetto" class="btn btn-primary">Aggiungi</button>
+            </div>
+        </div>
+        <div class="col">
+            <h3>Aggettivi</h3>
+            <ul id="aggettivi" class="list-group">
+            </ul>
+            <div class="input-group mt-3">
+                <input type="text" id="nuovoAggettivo" class="form-control" placeholder="Nuovo Aggettivo">
+                <button id="aggiungiAggettivo" class="btn btn-primary">Aggiungi</button>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col">
+            <button id="button" onclick="generafrase()">Generazione</button> 
+            <div id="contenitore">
+            <p id="output"></p>
+            </div>
+        </div>
+    </div>
 </div>
-    <script>
-        let soggetti = ["Mirko", "Maria", "Marco", "Mario", "Marisa", "Marta", "Manuel", "Masha", "Michael", "Max"];
-        let verbi = ["Saltare", "Salvare", "Sbarcare", "Sbarrare", "Sbagliare", "Sbattere", "Salire", "Sabotare", "Sbavare", "Sbanchettare"];
-        let complementiOggetto = ["il fumetto", "la casa", "la stufa", "la banana", "la serie", "il film", "il pallone", "le carte", "il sole", "la luna"];
-        let aggettivi = ["brutto", "stupido", "triste", "noioso", "stupendo", "orribile", "casinista", "calmo", "forte", "debole"];
 
-        function generafrase() {
+<script>
+    var soggetti = [];
+    var verbi = [];
+    var complementiOggetto = [];
+    var aggettivi = [];
+    function aggiungiElemento(lista, inputId) {
+        var nuovoElemento = document.getElementById(inputId).value;
+        if (nuovoElemento.trim() !== "") {
+            lista.push(nuovoElemento);
+            document.getElementById(inputId).value = "";
+            visualizzaElementi(lista, inputId);
+        }
+    }
+    function visualizzaElementi(lista, elementId) {
+        var ul = document.getElementById(elementId);
+        ul.innerHTML = "";
+        lista.forEach(function (elemento) {
+            var li = document.createElement("li");
+            li.className = "list-group-item d-flex justify-content-between align-items-center";
+            li.textContent = elemento;
+            var button = document.createElement("button");
+            button.className = "btn btn-danger";
+            button.textContent = "Elimina";
+            button.addEventListener("click", function () {
+                eliminaElemento(lista, elemento, elementId);
+            });
+            li.appendChild(button);
+            ul.appendChild(li);
+        });
+    }
+    function eliminaElemento(lista, elemento, elementId) {
+        var index = lista.indexOf(elemento);
+        if (index !== -1) {
+            lista.splice(index, 1);
+            visualizzaElementi(lista, elementId);
+        }
+    }
+    document.getElementById("aggiungiSoggetto").addEventListener("click", function () {
+        aggiungiElemento(soggetti, "nuovoSoggetto");
+    });
+    document.getElementById("aggiungiVerbo").addEventListener("click", function () {
+        aggiungiElemento(verbi, "nuovoVerbo");
+    });
+    document.getElementById("aggiungiComplementoOggetto").addEventListener("click", function () {
+        aggiungiElemento(complementiOggetto, "nuovoComplementoOggetto");
+    });
+    document.getElementById("aggiungiAggettivo").addEventListener("click", function () {
+        aggiungiElemento(aggettivi, "nuovoAggettivo");
+    });
+    visualizzaElementi(soggetti, "soggetti");
+    visualizzaElementi(verbi, "verbi");
+    visualizzaElementi(complementiOggetto, "complementiOggetto");
+    visualizzaElementi(aggettivi, "aggettivi");
+    function generafrase() {
             var soggetto = soggetti[Math.floor(Math.random() * soggetti.length)];
             var verbo = verbi[Math.floor(Math.random() * verbi.length)];
             var complementi_oggetto = complementiOggetto[Math.floor(Math.random() * complementiOggetto.length)];
@@ -43,6 +118,8 @@
             let frase = soggetto + " " + verbo + " " + complementi_oggetto + " " + aggettivo + ".";
             document.getElementById("output").innerText = frase;   
         }
-    </script>
+
+</script>
+
 </body>
 </html>

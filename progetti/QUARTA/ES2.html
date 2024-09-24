@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>generatore di numeri casuali</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px; /* aggiunge margine alla pagina */
+        }
+        #numbers {
+            margin-top: 20px; /* spazio sopra il div che mostra i numeri */
+            font-size: 24px;
+            font-weight: bold; /* rende il testo in grassetto */
+        }
+        #generate-button {
+            padding: 10px 20px; /* spazio interno al pulsante */
+            font-size: 16px;
+            cursor: pointer; /* cambia il cursore quando si passa sopra il pulsante */
+        }
+    </style>
+</head>
+<body>
+    <h1>generatore di numeri casuali</h1>
+    <button id="generate-button">genera numero casuale</button>
+    <div id="numbers"></div> <!-- div per mostrare il numero casuale -->
+
+    <script>
+        // funzione per generare un numero casuale tra 1 e 100
+        function getRandomNumber() {
+            return Math.floor(Math.random() * 100) + 1; // restituisce un numero intero casuale
+        }
+
+        // funzione per aggiornare il contenuto della pagina con un nuovo numero casuale
+        function updateNumbers() {
+            const numbersDiv = document.getElementById('numbers'); // seleziona il div per i numeri
+            const randomNumber = getRandomNumber(); // genera un numero casuale
+            numbersDiv.textContent = `numero casuale: ${randomNumber}`; // aggiorna il contenuto del div
+        }
+        document.getElementById('generate-button').addEventListener('click', updateNumbers);
+    </script>
+</body>
+</html>

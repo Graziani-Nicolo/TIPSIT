@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>generatore di numeri casuali</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px; /* aggiunge margine alla pagina */
+        }
+        #numbers {
+            margin-top: 20px; /* spazio sopra il div che mostra i numeri */
+            font-size: 24px;
+            font-weight: bold; /* rende il testo in grassetto */
+        }
+        #generate-button {
+            padding: 10px 20px; /* spazio interno al pulsante */
+            font-size: 16px;
+            cursor: pointer; /* cambia il cursore quando si passa sopra il pulsante */
+        }
+    </style>
+</head>
+<body>
+    <h1>generatore di numeri casuali</h1>
+    <div id="numbers"></div> <!-- div per mostrare i numeri -->
+
+    <script>
+        function generatePrimes(limit) {
+            const primes = [];
+            let number = 2;
+            while(primes.length < limit){
+                let isPrime = true;
+                for(let i = 2; i <= Math.sqrt(number); i++){
+                    if(number % i === 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+                if(isPrime){
+                    primes.push(number);
+                }
+                number++;
+            }
+
+            return primes;
+        }
+
+        // esempio di utilizzo
+        const maxNumber = 100;
+        const primeNumbers = generatePrimes(maxNumber);
+
+        // aggiungiamo il codice per visualizzare i numeri primi nell'HTML
+        const numbersDiv = document.getElementById('numbers');
+        numbersDiv.textContent = `I primi ${maxNumber} numeri primi sono: ${primeNumbers.join(', ')}`;
+    </script>
+</body>
+</html>
